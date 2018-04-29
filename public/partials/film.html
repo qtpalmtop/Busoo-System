@@ -1,0 +1,99 @@
+   <div class="content">
+        <div class="crumbs">
+            您当前的位置： <a class="pos" href="#/index">首页</a> > <a
+                class="pos" href="#">正在热映</a>
+            > <span ng-bind="film.name"></span>
+        </div>
+        <h3 class="movieName">
+            <em>{{film.name}} <span>{{film.tap}}</span>
+            </em>
+            <a id="min_1" href="#/ticket" ng-click="showTicket(film._id)">我要购票</a> 
+            
+        </h3>
+        <div id="poster">
+            <img src="{{film.img_url}}" height="400px" width="1000px">
+        </div>
+        <div class="movieInformation">
+            <span class="date">
+                <div class="info_details">
+                    <h5>上映日期：{{film.pub_date}}</h5>
+                    <dl>
+                        <dt>导演：</dt>
+                        <dd>{{film.director}}</dd>
+                        <dt>主演：</dt>
+                        <dd>{{film.actors}}</dd>
+                        <dt>类型：</dt>
+                        <dd>{{film.type}}</dd>
+                        <dt>国家：</dt>
+                        <dd>{{film.country}}</dd>
+                        <dt>版本：</dt>
+                        <dd>{{film.version}}</dd>
+                        <dt>片长：</dt>
+                        <dd>{{film.play_time}}分钟</dd>
+                    </dl>
+                </div>
+            </span>
+            <div class="story">
+                <h5>影片剧情:</h5>
+                <p>{{film.story}}</p>
+            </div>
+            <div class="story">
+                <h5>影片剧照：</h5>
+                <div id="movieImage"> 
+                    <a ng-repeat="img in imgs" href="#" class="movie_imge"> 
+                        <img src="{{img}}" alt="{{img}}"/>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="review">
+                <h5>
+                    影片评论 
+                </h5>
+                <ul class="movie_say">
+                    <li ng-repeat="com in comments" id="say_1">     
+                        <div class="say_content">
+                            <p class="say_name">{{com.user_id.name}}评论说:</p>
+                            <p>{{com.comment}}</p>
+                            <div class="say_time">发表日期：{{com.pub_time}}</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="movie_my_say">
+                    <table id="say_main">
+                        <thead>
+                            <tr>
+                                <th style="" colspan="2">
+                                    <h5>发影评，晒票根:</h5>
+                                    <hr />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form>
+                                <tr>
+                                    <td hidden><input type="text" name="filmid" value="{{film._id}}" />
+                                
+                                    </td>
+                                    <td colspan:"2" id="mycontent"><textarea name="comment"
+                                        width="700px" value="{{comment.comment}}" ng-model="comment.comment" id="content2" cols="120" rows="10"
+                                        placeholder="我要发表影评~"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <hr />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#/commentlist" ng-click="pubComment(film._id)" id="goto"><button>发表</button></a>
+                                    </td>
+                                </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <span class="write_review"></span>
+    </div>

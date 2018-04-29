@@ -1,0 +1,281 @@
+<!--body wrapper start-->
+<div class="wrapper" onLoad="{{mapInit()}}">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit ">
+
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-background">
+                            <div class="col-md-3 bg-grey-steel mt-step-col">
+                                <div class="mt-step-number">1</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">员工地址表</div>
+                                <div class="mt-step-content font-grey-cascade" style="margin-top:5px">导入坐标到地图</div>
+                            </div>
+                            <div class="col-md-3 bg-grey-steel mt-step-col">
+                                <div class="mt-step-number">2</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">地址生成站点</div>
+                                <div class="mt-step-content font-grey-cascade" style="margin-top:5px">聚合算法最佳站点</div>
+                            </div>
+                            <div class="col-md-3 bg-grey-steel mt-step-col">
+                                <div class="mt-step-number">3</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">站点生成线路</div>
+                                <div class="mt-step-content font-grey-cascade" style="margin-top:5px">最佳路线匹配</div>
+                            </div>
+                            <div class="col-md-3 bg-grey-steel mt-step-col active">
+                                <div class="mt-step-number">4</div>
+                                <div class="mt-step-title uppercase font-grey-cascade">最终线路调整</div>
+                                <div class="mt-step-content font-grey-cascade" style="margin-top:5px">手动调整线路数</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding: 0">
+                            <section class="panel" style="margin: 0px;padding: 0">
+                                <div class="panel-body">
+                                    <div class="col-md-8">
+                                        <div id="map" class="gmaps" style="height:430px;">
+                                            <div id="panel"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="panel-gmap">
+                                            <div class="col-md-12" style="padding:5px">
+                                                <div class="col-md-8"><input name="" id="ajustline" class="form-control" placeholder="请输入最终线路数"></div>
+                                                <div class="col-md-4"><a id="createline" class="btn btn-primary" style="position: relative;z-index: 9999">确认</a></div>
+                                                
+                                            </div>    
+                                            <div class="portlet portlet-sortable light bordered" style="margin-top: 10px">
+                                                <div class="portlet-title"  style="cursor:auto">
+                                                    <div class="caption">
+                                                        <i class="icon-speech"></i>
+                                                        <span class="caption-subject bold uppercase">线路一览</span>
+                                                    </div>
+                                                    <div class="actions">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body">
+                                                    <div class="row">
+                                                        <div class="pay" style="padding:0">
+                                                            <div class="pay-content" style="padding:0">
+                                                                <div class="col-md-12" style="padding:0">
+                                                                    <section class="panel" style="padding: 0">
+                                                                        <div class="panel-body" style="padding: 0;margin-top: 0px">
+                                                                            <div class="panel-group " id="accordion2">
+                                                                                <div class="panel" style="padding: 0">
+                                                                                    <div class="panel-heading dark">
+                                                                                        <h4 class="panel-title">
+                                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
+                                                                                                1号线
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                    <div id="collapseOne2" class="panel-collapse collapse ">
+                                                                                        <div class="panel-body">
+                                                                                            <ul class="scroll-1">
+                                                                                                <li>起点</li> 
+                                                                                                <li ng-repeat="station in stationList" >{{station.address_better}}</li>
+                                                                                                <li>终点</li> 
+                                                                                            </ul>   
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- <div class="panel" style="padding: 0">
+                                                                                    <div class="panel-heading dark">
+                                                                                        <h4 class="panel-title">
+                                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
+                                                                                                2号线
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                    <div id="collapseTwo2" class="panel-collapse collapse">
+                                                                                        <div class="panel-body">
+                                                                                            <ul class="scroll-1">
+                                                                                                <li>起点</li> 
+                                                                                                <li>                          
+                                                                                                    大梁公交车站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    黄龙村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    多宝寺站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    玫瑰路站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    玫瑰路树站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    春熙站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    黄龙村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    游泳池站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    红星路口站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    八宝寺站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    欢乐谷站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    杜甫草堂站  
+                                                                                                </li>
+                                                                                                <li>终点</li> 
+                                                                                            </ul>   
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="panel-3" class="panel" style="padding: 0">
+                                                                                    <div class="panel-heading dark">
+                                                                                        <h4 class="panel-title">
+                                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">
+                                                                                                3号线
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                    <div id="collapseThree2" class="panel-collapse collapse">
+                                                                                        <div class="panel-body">
+                                                                                            <ul class="scroll-1">
+                                                                                                <li>起点</li>  
+                                                                                                <li>                          
+                                                                                                    大梁公交车站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    黄龙村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    多宝寺站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    玫瑰路站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    玫瑰路树站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    春熙站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    黄龙村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    游泳池站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    红星路口站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    八宝寺站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    欢乐谷站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    杜甫草堂站  
+                                                                                                </li>
+                                                                                                <li>终点</li> 
+                                                                                            </ul>   
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="panel-4" class="panel" style="padding: 0">
+                                                                                    <div class="panel-heading dark">
+                                                                                        <h4 class="panel-title">
+                                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree3">
+                                                                                                4号线
+                                                                                            </a>
+                                                                                        </h4>
+                                                                                    </div>
+                                                                                    <div id="collapseThree3" class="panel-collapse collapse in">
+                                                                                        <div class="panel-body">
+                                                                                            <ul class="scroll-1">
+                                                                                                <li>起点</li>  
+                                                                                                <li>                    双林路口站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    欢乐谷站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    市中心站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    华西医院路站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    多宝寺站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    国色天乡站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    农家村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    青龙村站  
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    石灵街道站  
+                                                                                                </li>
+                                                                                                <li>终点</li> 
+                                                                                            </ul>   
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> -->
+                                                                            </div>                          
+                                                                        </div>
+                                                                    </section>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </section>   
+                        </div>
+
+                        <div class="station-create">
+                            <!-- <a href="linestatus.html" class="btn btn-primary">完成线路调整</a> -->
+                            <a href="#/line" style="color:#2ab4c0;background-color: #fff;border-color: #2ab4c0;font-size:22px;width:100%;margin-bottom:20px;line-height: 2" class="btn btn-primary">完成线路调整</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer section start-->
+<footer>
+    2016 &copy; Bussoo by NiHoo
+</footer>
+<!--footer section end-->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="lib/jquery-1.10.2.min.js"></script>
+<script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="lib/jquery-migrate-1.2.1.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/modernizr.min.js"></script>
+<script src="lib/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="lib/scripts.js"></script>
+<!-- <script src="../js/linestatus4.js"></script> -->

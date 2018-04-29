@@ -1,0 +1,44 @@
+
+<div class="content">
+	<div class="crumbs">
+			您当前的位置： <a class="pos" href="#/index">首页</a> > <a class="pos" href="#">正在热映</a>><a class="pos">电影订票</a>
+			> {{tickets[0].film_id.name}}
+	</div>
+
+	<div id="date">
+	</div>
+	<div id="date_2">
+	>>
+	<a href="aboutMovie1">{{tickets[0].film_id.name}}</a>
+	</div>
+	<div class="detail">
+		<table> 
+		<tr>
+		<td hidden>id</td>
+			<td>影片名称</td>
+			<td>放映时间</td>
+			<td>影片空位</td>
+			<td>2D/3D</td>
+			<td>影片时长</td>
+			<td>价格</td>
+			<td>购票</td>
+		</tr>
+
+		<tr ng-repeat="ticket in tickets">
+			<form>
+				<td hidden><input type="text" name="film_id" value={{ticket.film_id._id}}/></td>
+				<td hidden><input type="text" name="ticket_id" value={{ticket._id}}/></td>
+				<td>{{ticket.film_id.name}}</td>
+				<td>{{ticket.play_date}}</td>
+				<td>余{{ticket.seats}}/90</td>
+				<td>{{ticket.film_id.type}}</td>
+				<td>{{ticket.film_id.play_time}}分钟</td>
+				<td>{{ticket.price}}</td>
+				<td><a  href="#/orderlist" ng-click="buy(ticket.film_id._id,ticket._id)" >购买</a></td>
+			</form>
+			<span>{{err}}</span>
+		</tr>			
+	</table>
+	</div>
+	
+</div>

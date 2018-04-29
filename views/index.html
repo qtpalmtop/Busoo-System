@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-controller="LayoutController">
+<head>
+    <meta charset="utf-8">
+<!--     <style>
+    [ng-cloak] {
+        display: none;
+    }
+</style> -->
+
+    <title ng-bind="title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NJBlog,Base on Nodejs ">
+    <meta name="author" content="NJBlog">
+
+    <link rel="shortcut icon" href="">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" charset="UTF-8" src="lib/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--    <script type="text/javascript" charset="UTF-8" src="lib/angular/angular.js"></script>-->
+    <!--    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>-->
+    <!--<link rel='stylesheet' href='lib/bootstrap/css/bootstrap-responsive.css'/>-->
+
+    <link rel="stylesheet" href="css/base.css" type='text/css' media="all"/>
+    <link href='themes/glowsimple/default.css' rel='stylesheet' type='text/css'>
+
+    <!-- Porlet CSS -->
+    <link href="css/components.min.css" rel="stylesheet">
+    <link href="css/plugins.min.css" rel="stylesheet">
+    
+    <!-- Table CSS -->
+    <link href="css/bootstrap-table.css" rel="stylesheet">
+
+    <!-- iziModal -->
+    <link rel="stylesheet" type="text/css" href="../css/iziModal.min.css" />
+
+    <!--Morris Chart CSS --> 
+    <link rel="stylesheet" href="lib/morris-chart/morris.css">
+
+    <!--common-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+    <!-- <script src="http://webapi.amap.com/maps?v=1.3&key=4b56f46c821bbaf568cbba8002af3da8"  style="height:80%;width:80%;"></script>  -->
+    
+    <!-- 高德地图 -->
+    <script src="http://webapi.amap.com/maps?v=1.3&key=65da68cb883b3138051a72b783e033e3&plugin=AMap.Driving,AMap.Scale,AMap.OverView,AMap.ToolBar"></script> 
+
+</head>
+
+
+<body >
+
+<!-- <div id="njblogbg"  >
+    <img id="bg" ng-src="{{resources.bg}}">
+    <a href="javascript:;" class="prv-fullscreen" ng-click="preimg()">Pre</a>
+    <a href="javascript:;" class="nxt-fullscreen" ng-click="nextimg()">Next</a>
+</div> -->
+
+<!--  
+<div class="wrap_top_nav">
+    <nav id="top_nav">
+        <ul class="inline-style clearfix">
+            <li class="active"><a href="#/">{{txt.home}}</a></li>
+            <li class="active"><a href="#/{{login.url}}" ng-bind="login.name"></a></li>
+            <li class="active"><a href="#/{{signup.url}}" ng-bind="signup.name">{{signup.name}}</a></li>
+            <li class="active"><a href="javascript:;" ng-click="filmsInit()"></a></li>
+            <li class="active"><a href="#/orderlist" ng-click="showOrder()">我的订单</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="page" ng-view=""></div>
+-->
+
+    <!--<script data-main="js/main" src="lib/require/require-2.1.0.js"></script>-->
+    
+    <section>
+        <!-- left side start-->
+        <div class="left-side sticky-left-side">
+    
+            <!--logo and iconic logo start-->
+            <div class="logo">
+                <a href="#/#/index"><img src="images/logo.png" alt=""></a>
+            </div>
+    
+            <div class="logo-icon text-center">
+                <a href="#/#/index"><img src="images/logo_icon.png" alt=""></a>
+            </div>
+            <!--logo and iconic logo end-->
+    
+             <div class="left-side-inner">
+    
+                <!-- visible to small devices only -->
+                <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                    <div class="media logged-user">
+                        <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                        <div class="media-body">
+                            <h4><a href="#">高铭</a></h4>
+                            <span>"Hello There..."</span>
+                        </div>
+                    </div>
+    
+                    <h5 class="left-nav-title">Account Information</h5>
+                    <ul class="nav nav-pills nav-stacked custom-nav">
+                      <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                      <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                      <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                    </ul>
+                </div>
+    
+                <!--sidebar nav start-->
+                <ul id="side-nav" class="nav nav-pills nav-stacked custom-nav">
+                    <li id="index" class="active"><a href="#/index"><i class="fa fa-home"></i> <span>首页</span></a></li>
+                    <li><a href="#/lineStatus"><i class="fa fa-road"></i> <span>线路状态</span></a></li>
+                    <!-- <li class="menu-list active"><a href=""><i class="fa fa-eraser"></i> <span>线路信息管理</span></a>
+                        <ul class="sub-menu-list">
+                            <li><a href="#/station"> 站点管理</a></li>
+                            <li><a href="#/line"> 线路管理</a></li>
+                            <li><a href="#/addline-1"> 新增线路</a></li>
+                            <li><a href="#/updateline-1"> 线路优化</a></li>
+                            <li><a href="#/riderate"> 乘坐率</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list"><a href=""><i class="fa fa-truck"></i> <span>车辆信息管理</span></a>
+                        <ul class="sub-menu-list">
+                            <li><a href="#/businfo"> 车辆信息</a></li>
+                            <li><a href="#/oil_view"> 燃油记录</a></li>
+                            <li><a href="#/accident_view"> 事故记录</a></li>
+                            <li><a href="#/fault_view"> 故障记录</a></li>
+                            <li><a href="#/repair_view"> 维修记录</a></li>
+    
+                        </ul>
+                    </li> -->
+                    <li><a href="#/addline"><i class="fa fa-eraser"></i> <span>新增线路</span></a></li>
+                    <li><a href="#/busInfo"><i class="fa fa-truck"></i> <span>车辆信息管理</span></a></li>
+                    <li><a href="#/employee"><i class="fa fa-users"></i> <span>员工信息管理</span></a></li>
+                    <li><a href="#/driver"><i class="fa fa-user-md"></i> <span>司机信息管理</span></a></li>
+                    <!-- <li class="menu-list"><a href=""><i class="fa fa-user-md"></i> <span>司机管理</span></a>
+                        <ul class="sub-menu-list">
+                            <li><a href="#/driver"> 司机信息管理</a></li>
+                            <li><a href="#/dutyroaster"> 司机排班</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list"><a href=""><i class="fa fa-user"></i> <span>管理员管理</span></a>
+                        <ul class="sub-menu-list">
+                            <li><a href="#/administrators"> 管理员管理</a></li>
+                            <li><a href="#/power"> 角色管理</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+                <!--sidebar nav end-->
+    
+            </div>
+        </div>
+        <!-- left side end-->
+        
+        <!-- main content start-->
+        <div class="main-content" >
+    
+            <!-- header section start-->
+            <div class="header-section">
+    
+                <!--toggle button start-->
+                <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+                <!--toggle button end-->
+    
+                <!--search start-->
+                <form class="searchform" action="#/index" method="post">
+                    <input type="text" class="form-control" name="keyword" placeholder="搜索" />
+                </form>
+                <!--search end-->
+    
+                <!--notification menu start -->
+                <div class="menu-right">
+                    <ul class="notification-menu">
+                        
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge">4</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">你有4封邮件 </h5>
+                                <ul class="dropdown-list normal-list">
+                                    <li class="new">
+                                        <a href="">
+                                            <span class="thumb"><img src="images/photos/user1.png" alt="" /></span>
+                                            <span class="desc">
+                                              <span class="name">郭伟宇 <span class="badge badge-success">new</span></span>
+                                              <span class="msg">司机发来的故障信息...</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="thumb"><img src="images/photos/user2.png" alt="" /></span>
+                                            <span class="desc">
+                                              <span class="name">黄振</span>
+                                              <span class="msg">司机发来的维修消息...</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="thumb"><img src="images/photos/user3.png" alt="" /></span>
+                                            <span class="desc">
+                                              <span class="name">陈孝则</span>
+                                              <span class="msg">司机发来的事故消息...</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="thumb"><img src="images/photos/user4.png" alt="" /></span>
+                                            <span class="desc">
+                                              <span class="name">李霖</span>
+                                              <span class="msg">司机发来的故障消息...</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="badge">2</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-head pull-right">
+                                <h5 class="title">消息</h5>
+                                <ul class="dropdown-list normal-list">
+                                    <li class="new">
+                                        <a href="">
+                                            <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                            <span class="name"> 韩雪乘客的投诉消息 </span>
+                                            <em class="small">34 分钟前</em>
+                                        </a>
+                                    </li>
+                                    <li class="new">
+                                        <a href="">
+                                            <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                            <span class="name">王仁鑫乘客的投诉消息  </span>
+                                            <em class="small">1 小时前</em>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <img src="images/photos/user-avatar.png" alt="" />
+                                高铭
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                <li><a href="#"><i class="fa fa-user"></i>  个人信息</a></li>
+                                <li><a href="#"><i class="fa fa-cog"></i>  设置</a></li>
+                                <li><a href="#"><i class="fa fa-sign-out"></i> 退出登录</a></li>
+                            </ul>
+                        </li>
+    
+                    </ul>
+                </div>
+                <!--notification menu end -->
+    
+            </div>
+            <!-- header section end-->
+            
+            <div class="page" ng-view="" ></div>
+            
+        <!-- main content end-->
+    </section>
+
+    <!-- Placed js at the end of the document so the pages load faster -->
+    <script src="lib/jquery-1.10.2.min.js"></script>
+    <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="lib/jquery-migrate-1.2.1.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/modernizr.min.js"></script>
+    <script src="lib/jquery.nicescroll.js"></script>
+
+    <!-- easy pie chart -->
+    <script src="lib/easypiechart/jquery.easypiechart.js"></script>
+    <!-- <script src="lib/easypiechart/easypiechart-init.js"></script> -->
+
+    <!-- Sparkline Chart -->
+    <script src="lib/sparkline/jquery.sparkline.js"></script>
+    <!-- <script src="lib/sparkline/sparkline-init.js"></script> -->
+
+    <!-- Morris Chart -->
+    <script src="lib/morris-chart/morris2.js"></script>
+    <script src="lib/morris-chart/raphael-min.js"></script>
+    <!-- <script src="lib/morris-chart/morris.init.js"></script> -->
+
+    <!-- height chart -->
+    <!-- <script src="lib/highcharts.js"></script> -->
+
+    <!-- common scripts for all pages -->
+    <script src="lib/scripts.js"></script>
+    <script src="lib/jquery.color.min.js"></script>
+    <script src="lib/jquery.animateNumber.min.js"></script>
+
+    <!-- index.js -->
+    <!-- <script src="lib/index.js"></script> -->
+
+    <!--Calendar-->
+    <script src="lib/calendar/clndr.js"></script>
+    <script src="lib/calendar/evnt.calendar.init.js"></script>
+    <script src="lib/calendar/moment-2.2.1.js"></script>
+
+
+    <script type="text/javascript" src="lib/data-tables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="lib/data-tables/DT_bootstrap.js"></script>
+    <!-- <script src="lib/editable-table.js"></script> -->
+    
+    <!--iziModal动态弹窗-->
+    <script src="lib/iziModal.min.js"></script>
+
+    <!--Table Js-->
+    <script src="lib/bootstrap-table.js"></script>
+    
+    <script src="lib/xlsx.core.min.js"></script>
+    <!--common scripts for all pages-->
+    <!-- <script src="lib/scripts.js"></script>
+    <script src="lib/linestatus5.js"></script> -->
+
+    <!--Dashboard Charts-->
+    <!-- <script src="lib/dashboard-chart-init.js"></script> -->
+
+</body>
+<script data-main="js/main-built" src="lib/require/require.min.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="lib/prefixfree.min.js"></script> -->
+
+<!--[if lt IE 8]>
+<script type="text/javascript">
+    document.body.innerHTML="<div style='color:red; margin:0 auto; font-size:18px;'>" +
+            "您的浏览器实在太老了！请更新最新的浏览器吧！" +
+            "<a href='http://download.microsoft.com/download/5/D/4/5D405568-02E9-414D-BA52-A8D9890C1D31/IE10-Windows6.1-zh-cn.exe' >IE10</a>" +
+            "|<a href='https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B0D7D90D0-1294-AFB2-9950-D49F3DDE4495%7D%26lang%3Dzh-TW%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26installdataindex%3Ddefaultbrowser/update2/installers/ChromeSetup.exe'>chrome</a>"+
+            "</div>";
+</script>
+<![endif]-->
+</html>

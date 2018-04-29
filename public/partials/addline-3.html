@@ -1,0 +1,125 @@
+        <!--body wrapper start-->
+        <div class="wrapper" onLoad="{{mapInit()}}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light portlet-fit ">
+ 
+                        <div class="portlet-body">
+                            <div class="mt-element-step">
+                                <div class="row step-background">
+                                    <div class="col-md-3 bg-grey-steel mt-step-col">
+                                        <div class="mt-step-number">1</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">员工地址表</div>
+                                        <div class="mt-step-content font-grey-cascade" style="margin-top:5px">导入坐标到地图</div>
+                                    </div>
+                                    <div class="col-md-3 bg-grey-steel mt-step-col">
+                                        <div class="mt-step-number">2</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">地址生成站点</div>
+                                        <div class="mt-step-content font-grey-cascade" style="margin-top:5px">聚合算法最佳站点</div>
+                                    </div>
+                                    <div class="col-md-3 bg-grey-steel mt-step-col active">
+                                        <div class="mt-step-number">3</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">站点生成线路</div>
+                                        <div class="mt-step-content font-grey-cascade" style="margin-top:5px">最佳路线匹配</div>
+                                    </div>
+                                    <div class="col-md-3 bg-grey-steel mt-step-col">
+                                        <div class="mt-step-number">4</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">最终线路调整</div>
+                                        <div class="mt-step-content font-grey-cascade" style="margin-top:5px">手动调整线路数</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding: 0">
+                                    <section class="panel" style="margin: 0px;padding: 0">
+                                        <div class="panel-body">
+                                            <div id="map" class="gmaps" style="height:430px">
+                                                <div id="panel"></div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section class="panel">
+                                        <header class="panel-heading">
+                                            站点表
+                                            <span class="tools pull-right">
+                                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                                <a href="javascript:;" class="fa fa-times"></a>
+                                             </span>
+                                        </header>
+                                        <div class="panel-body">
+                                            <table data-toggle="table" data-url="lib/station.json" data-height="500" data-pagination="true">
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th data-field="state" data-checkbox="true"></th> -->
+                                                        <!-- <th>站点编号</th>
+                                                        <th>实际位置</th>
+                                                        <th>推荐位置</th> -->
+                                                        <th data-field="stationId" data-align="">编号</th>
+                                                        <th data-field="address_now" data-align="center">实际位置</th>
+                                                        <th data-field="address_better" data-align="">推荐位置</th>
+                                                        <th data-field="passengerNames" data-align="">应乘人员</th>
+                                                    </tr>
+                                                </thead>
+                                                <!-- <tbody>
+                                                    <tr>
+                                                        <td>233</td>
+                                                        <td>666</td>
+                                                        <td>555</td>
+                                                    </tr>
+                                                    <tr ng-repeat="station in stationList">
+                                                        <td ng-bind="station.stationId">{{station.stationId}}</td>
+                                                        <td ng-bind="station.address_now">{{station.address_now}}</td>
+                                                        <td ng-bind="station.address_better">{{station.address_better}}</td>
+                                                    </tr>
+                                                </tbody> -->
+                                            </table>
+                                        </div> 
+                                    </section>           
+                                </div>
+                                <div class="station-create">
+                                    <a href="#/addline4" ng-click="createLine()" style="color:#2ab4c0;background-color: #fff;border-color: #2ab4c0;font-size:22px;width:100%;margin-bottom:20px;line-height: 2" class="btn btn-primary" >点击生成线路</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-people" class="modal-default">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="left">应乘人数：6</div> 
+                </div>
+                <div class="col-md-8">
+                    <div class="right">应乘人员：<span>李霖</span>,<span>郭伟宇</span>,<span>黄振</span>,<span>高铭</span>,<span>王仁鑫</span></div>
+                </div>
+            </div>
+        </div>
+        <!--footer section start-->
+        <footer>
+            2016 &copy; Busoo by NiHoo
+        </footer>
+        <!--footer section end-->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="lib/jquery-1.10.2.min.js"></script>
+<script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="lib/jquery-migrate-1.2.1.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/modernizr.min.js"></script>
+<script src="lib/jquery.nicescroll.js"></script>
+<!-- 
+<script type="text/javascript" src="lib/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/data-tables/DT_bootstrap.js"></script> -->
+<!-- <script src="lib/editable-table.js"></script>  -->
+
+<!--common scripts for all pages-->
+<script src="lib/scripts.js"></script>
+<!-- <script src="lib/linestatus3.js"></script> -->
+
+<!--Table Js-->
+<script src="lib/bootstrap-table.js"></script>
+
+<!-- iziModal动态弹窗
+<script src="lib/iziModal.min.js"></script> -->
+<!--iziModal动态弹窗-->
+<script src="lib/iziModal.min.js"></script>
+

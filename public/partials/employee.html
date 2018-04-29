@@ -1,0 +1,100 @@
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                <section class="panel">
+                <header class="panel-heading">
+                    员工表
+                    <span class="tools pull-right">
+                        <a href="javascript:;" class="fa fa-chevron-down"></a>
+                        <a href="javascript:;" class="fa fa-times"></a>
+                     </span>
+                </header>
+                <div class="panel-body">
+                    <table data-toggle="table" data-url="lib/employee.json" data-height="500" data-pagination="true">
+                        <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="id" data-align="right">员工编号</th>
+                                <th data-field="name" data-align="center">姓名</th>
+                                <th data-field="phone" data-align="center">手机号码</th>
+                                <th data-field="address" data-align="">家庭地址</th>
+                                <th data-field="scheduling" data-align="">编排</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer>
+            2016 &copy; Busoo by Nihoo
+        </footer>
+        <!--footer section end-->
+
+        <div id="modal-prompt" class="modal-default" style="margin-left:2%;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                         <div class="form-group">
+
+                            <input id="file-3" type="file" multiple=true>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-12" style="text-align: center;">
+                    <div class="left"><a id="sure" onclick=closeModal() href="javascript:void(0)" class="btn btn-info" style="padding:7px 28px">上传</a></div> 
+                </div>
+                <!--
+                <div class="col-md-6" style="text-align: center;">
+                    <div class="right"><a href="javascript:void(0)" class="btn btn-info" style="padding:7px 28px">否</a></div>
+                </div> -->
+            </div>
+        </div>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="lib/jquery-1.10.2.min.js"></script>
+<script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="lib/jquery-migrate-1.2.1.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/modernizr.min.js"></script>
+<script src="lib/jquery.nicescroll.js"></script>
+
+<script src="lib/iziModal.min.js"></script>
+
+<!--Table Js-->
+<script src="lib/bootstrap-table.js"></script>
+
+<!--common scripts for all pages-->
+<script src="lib/scripts.js"></script>
+<!-- 
+function closeModal(){
+    $('#modal-prompt').iziModal('close');
+    setTimeout("location.href = 'employee-2.html'",500);
+}
+
+    $('#modal').iziModal();
+    $("#modal-prompt").iziModal({
+        title: "是否导入数据？",
+        subtitle: "",
+        headerColor: "#77c2ef",
+        iconClass: 'icon-announcement',
+        width: 300,
+        padding: 20
+    });
+
+    $("#getfile").live('click',function(){  
+        var ie = !-[1,];   
+        if(ie){  
+            // jQuery('#file').trigger('click').trigger('change');  
+        }else{  
+            // jQuery('#file').trigger('click');
+            setTimeout(function(){
+                $("#modal-prompt").iziModal('open');    
+            },0);
+
+        }  
+          
+    });   -->

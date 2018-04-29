@@ -1,0 +1,35 @@
+
+	<div id="content" width="1000px">
+			<div class="crumbs">
+			您当前的位置：
+			<a href="#/index">首页</a> 
+			>
+			<a id="pos" href="#">我的订单</a>
+		</div>
+		<div class="goods">
+		<!-- 按时间顺序倒序排列 -->
+			<table>
+				<tr>
+					<th>序号</th>
+					<th>电影名称</th>
+					<th>电影金额（元）</th>
+					<th>上映时间</th>
+					<th>是否取票</th>
+					<th>退款</th>
+				</tr>	
+					<tr ng-repeat="order in orders">
+						<form>
+							<td  hidden><input type="text" name="orderid"  value={{order._id}}></input></td>
+							<td>{{order._id}}</td>
+							<td>{{order.film_id.name}}</td>
+							<td>{{order.ticket_id.price}}</td>
+							<td>{{order.ticket_id.play_date}}</td>
+							<td>未取票</td>
+							<td><a href="#/orderlist" ng-click="reback(order._id)"><button>退票</button></a></td>
+						</form>
+					</tr>
+					
+				
+			</table>
+		</div>
+	</div>
