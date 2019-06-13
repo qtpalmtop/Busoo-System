@@ -5,7 +5,7 @@
   - 数据库采用 [Mongodb](http://www.mongodb.org/)，通过[Mongoose](https://github.com/LearnBoost/mongoose)驱动。
   - DoDo-Movie前台采用[AngularJs](http://angularjs.org/)进行开发。
   - DoDo-Movie目前所有前端JS代码全部采用模块化编写，使用[Requirejs](http://requirejs.org/)驱动（将来可能考虑采用国产[Seajs](http://seajs.org/docs/)）。
-  - DoDo-Movie使用[mocha](http://visionmedia.github.com/mocha/)+[jasmine](http://pivotal.github.com/jasmine/)来编写js单元测试。
+  - DoDo-Movie使用[mocha](http://mochajs.org/)+[jasmine](http://pivotal.github.com/jasmine/)来编写js单元测试。
   - 前端UI使用了[bootstrap](https://github.com/twitter/bootstrap)。
   - DoDo-Movie使用强大的grunt对项目进行构建工作。
   - DoDo-Movie全部代码托管在GitHub上，使用牛逼的travis-ci进行持续集成（可用来跑单元测试）。
